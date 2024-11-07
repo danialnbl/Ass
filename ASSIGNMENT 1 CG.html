@@ -353,7 +353,7 @@
         -1.0,
         -0.3, //113 atas
 
-        // 37th object (tengah) - bil
+        // 36th object (tengah) - bil
         -0.7,
         -0.3, //114 kiri
         -0.9,
@@ -361,7 +361,7 @@
         -0.9,
         -0.3, //116 atas
 
-        // 38th object (tengah) - bil
+        // 37th object (tengah) - bil
         -0.7,
         -0.5, //115 kiri
         -0.9,
@@ -369,7 +369,7 @@
         -0.7,
         -0.3, //117 atas
 
-        // 40th object - bil
+        // 38th object - bil
         -0.5,
         -0.5, //115 kiri
         -0.3,
@@ -377,13 +377,27 @@
         -0.5,
         -0.3, //117 atas
 
-        // 41th object - bil
+        // 39th object - bil
         -0.3,
         -0.3, //118 kiri
         -0.3,
         -0.5, //119 kanan
         -0.5,
         -0.3, //120 atas
+
+        // 40th object - juel (left house wall)
+        -1.32, 
+        -1.1, //121 bawah
+        -1.32, 
+        -0.63, //122 atas
+
+        //41st object - juel (left roof)
+        -1.5, 
+        -0.63, //123 (bawah kiri)
+        -1.38, 
+        -0.12, //124 (atas kiri)
+        0.15, 
+        -0.12, //125 (atas kanan)
       ];
 
       // Here's where we call the routine that builds all the
@@ -584,6 +598,16 @@
 
       primitive = gl.TRIANGLES; // 41th object
       offset = 121;
+      vertexCount = 3;
+      gl.drawArrays(primitive, offset, vertexCount);
+
+      primitive = gl.LINE_STRIP; // 42nd object
+      offset = 124;
+      vertexCount = 2;
+      gl.drawArrays(primitive, offset, vertexCount);
+
+      primitive = gl.LINE_STRIP; // 43rd object
+      offset = 126;
       vertexCount = 3;
       gl.drawArrays(primitive, offset, vertexCount);
 
