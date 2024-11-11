@@ -419,7 +419,51 @@
         -0.39,
         -0.70, //133
         
-        
+        /*// 38th object - bil
+        -0.5,
+        -0.5, //115 kiri
+        -0.3,
+        -0.5, //116 kanan
+        -0.5,
+        -0.3, //117 atas
+
+        // 39th object - bil
+        -0.3,
+        -0.3, //118 kiri
+        -0.3,
+        -0.5, //119 kanan
+        -0.5,
+        -0.3, //120 atas*/
+
+        // 44th object - juel (frame windows atas kiri)
+        -1.22, 
+        -0.33, //134
+        -1.22, 
+        -0.52, //135
+        -0.98, 
+        -0.52, //136
+        -0.98, 
+        -0.33, //137
+
+        // 45th object - juel (frame windows atas tengah)
+        -0.918, 
+        -0.33, //134
+        -0.918, 
+        -0.52, //135
+        -0.68, 
+        -0.52, //136
+        -0.68, 
+        -0.33, //137
+
+        // 45th object - juel (frame windows atas tengah)
+        -0.52, 
+        -0.33, //134
+        -0.52, 
+        -0.52, //135
+        -0.282, 
+        -0.52, //136
+        -0.282, 
+        -0.33, //137
       ];
 
       // Here's where we call the routine that builds all the
@@ -633,18 +677,33 @@
       vertexCount = 3;
       gl.drawArrays(primitive, offset, vertexCount);
 
-      primitive = gl.LINE_LOOP;
+      primitive = gl.LINE_LOOP; // 44th object
       offset = 129;
       vertexCount = 4;
       gl.drawArrays(primitive, offset, vertexCount);
 
-      primitive = gl.LINE_LOOP;
+      primitive = gl.LINE_LOOP; // 45th object
       offset = 133;
       vertexCount = 4;
       gl.drawArrays(primitive, offset, vertexCount);
 
+      primitive = gl.LINE_STRIP; // 45th object
+      offset = 137;
+      vertexCount = 4;
+      gl.drawArrays(primitive, offset, vertexCount);
+
+      primitive = gl.LINE_STRIP; // 45th object
+      offset = 141;
+      vertexCount = 4;
+      gl.drawArrays(primitive, offset, vertexCount);
+
+      primitive = gl.LINE_STRIP; // 46th object
+      offset = 145;
+      vertexCount = 4;
+      gl.drawArrays(primitive, offset, vertexCount);
+
       primitive = gl.TRIANGLE_FAN; // 36th object
-      halfCircleData = halfCircle(-1.1, -0.34);
+      halfCircleData = halfCircle(-1.1, -0.34, 0.1027);
       vertexCount = halfCircleData.numVertices;
       halfCircleBuffer = gl.createBuffer();
       gl.bindBuffer(gl.ARRAY_BUFFER, halfCircleBuffer);
@@ -666,7 +725,7 @@
       gl.drawArrays(primitive, 0, vertexCount);
 
       primitive = gl.TRIANGLE_FAN; // 39th object
-      halfCircleData = halfCircle(-0.8, -0.34);
+      halfCircleData = halfCircle(-0.8, -0.34, 0.1027);
       vertexCount = halfCircleData.numVertices;
       halfCircleBuffer = gl.createBuffer();
       gl.bindBuffer(gl.ARRAY_BUFFER, halfCircleBuffer);
@@ -687,7 +746,70 @@
       gl.drawArrays(primitive, 0, vertexCount);
 
       primitive = gl.TRIANGLE_FAN; // 42th object
-      halfCircleData = halfCircle(-0.4, -0.34);
+      halfCircleData = halfCircle(-0.4, -0.34, 0.1027);
+      vertexCount = halfCircleData.numVertices;
+      halfCircleBuffer = gl.createBuffer();
+      gl.bindBuffer(gl.ARRAY_BUFFER, halfCircleBuffer);
+      gl.bufferData(
+        gl.ARRAY_BUFFER,
+        new Float32Array(halfCircleData.vertices),
+        gl.STATIC_DRAW
+      );
+      gl.vertexAttribPointer(
+        programInfo.attribLocations.vertexPosition,
+        2,
+        gl.FLOAT,
+        false,
+        0,
+        0
+      );
+      gl.enableVertexAttribArray(programInfo.attribLocations.vertexPosition);
+      gl.drawArrays(primitive, 0, vertexCount);
+
+      primitive = gl.LINE_STRIP; // 42th object
+      halfCircleData = halfCircle(-1.102, -0.34, 0.12);
+      vertexCount = halfCircleData.numVertices;
+      halfCircleBuffer = gl.createBuffer();
+      gl.bindBuffer(gl.ARRAY_BUFFER, halfCircleBuffer);
+      gl.bufferData(
+        gl.ARRAY_BUFFER,
+        new Float32Array(halfCircleData.vertices),
+        gl.STATIC_DRAW
+      );
+      gl.vertexAttribPointer(
+        programInfo.attribLocations.vertexPosition,
+        2,
+        gl.FLOAT,
+        false,
+        0,
+        0
+      );
+      gl.enableVertexAttribArray(programInfo.attribLocations.vertexPosition);
+      gl.drawArrays(primitive, 0, vertexCount);
+
+      primitive = gl.LINE_STRIP; // 42th object
+      halfCircleData = halfCircle(-0.80, -0.34, 0.12);
+      vertexCount = halfCircleData.numVertices;
+      halfCircleBuffer = gl.createBuffer();
+      gl.bindBuffer(gl.ARRAY_BUFFER, halfCircleBuffer);
+      gl.bufferData(
+        gl.ARRAY_BUFFER,
+        new Float32Array(halfCircleData.vertices),
+        gl.STATIC_DRAW
+      );
+      gl.vertexAttribPointer(
+        programInfo.attribLocations.vertexPosition,
+        2,
+        gl.FLOAT,
+        false,
+        0,
+        0
+      );
+      gl.enableVertexAttribArray(programInfo.attribLocations.vertexPosition);
+      gl.drawArrays(primitive, 0, vertexCount);
+
+      primitive = gl.LINE_STRIP; // 42th object
+      halfCircleData = halfCircle(-0.401, -0.34, 0.12);
       vertexCount = halfCircleData.numVertices;
       halfCircleBuffer = gl.createBuffer();
       gl.bindBuffer(gl.ARRAY_BUFFER, halfCircleBuffer);
@@ -712,10 +834,10 @@
 
     window.onload = main;
 
-    function halfCircle(midX, midY) {
+    function halfCircle(midX, midY, rad) {
       const numVertices = 100;
       const vertices = [];
-      const radius = 0.1027;
+      const radius = rad;
 
       for (let i = 0; i <= numVertices; i++) {
         const angle = (Math.PI * i) / numVertices; // Half-circle (0 to π)
