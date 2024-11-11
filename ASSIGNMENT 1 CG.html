@@ -391,13 +391,35 @@
         -1.32, 
         -0.63, //122 atas
 
-        //41st object - juel (left roof)
+        // 41st object - juel (left roof)
         -1.5, 
         -0.63, //123 (bawah kiri)
         -1.38, 
         -0.12, //124 (atas kiri)
         0.15, 
         -0.12, //125 (atas kanan)
+
+        //42nd object - juel
+        -0.79,
+        -0.90, //126
+        -1.26,
+        -0.90, //127
+        -1.26,
+        -0.73, //128
+        -0.79,
+        -0.73, //129
+
+        //43rd object - juel
+        -0.39,
+        -1.1, //130
+        -0.03,
+        -1.1, //131
+        -0.03,
+        -0.70, //132
+        -0.39,
+        -0.70, //133
+        
+        
       ];
 
       // Here's where we call the routine that builds all the
@@ -609,6 +631,16 @@
       primitive = gl.LINE_STRIP; // 43rd object
       offset = 126;
       vertexCount = 3;
+      gl.drawArrays(primitive, offset, vertexCount);
+
+      primitive = gl.LINE_LOOP;
+      offset = 129;
+      vertexCount = 4;
+      gl.drawArrays(primitive, offset, vertexCount);
+
+      primitive = gl.LINE_LOOP;
+      offset = 133;
+      vertexCount = 4;
       gl.drawArrays(primitive, offset, vertexCount);
 
       primitive = gl.TRIANGLE_FAN; // 36th object
